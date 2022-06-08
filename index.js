@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+const Person = require('./models/Person');
+
 // forma de ler JSON / middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

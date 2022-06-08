@@ -28,7 +28,7 @@ const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD);
 
 mongoose
     .connect(
-        `mongodb+srv://${DB_USER}:${DB_PASSWORD}@api-cluster.gbookwh.mongodb.net/bancodaapi?retryWrites=true&w=majority`
+        `mongodb+srv://${DB_USER}:${DB_PASSWORD}@api-node-hora-de-codar.qsgtn.mongodb.net/bancodaapi?retryWrites=true&w=majority`
     )
     .then(() => {
         app.listen(3000);

@@ -1,5 +1,7 @@
 // config inicial
 const express = require('express');
+const mongoose = require('mongoose');
+
 const app = express();
 
 // forma de ler JSON / middlewares
@@ -14,4 +16,15 @@ app.get('/', (req, res) => {
 });
 
 // entregar uma porta
-app.listen(3000);
+const DB_USER = '???';
+const DB_PASSWORD = encodeURIComponent('???');
+
+mongoose
+    .connect(
+        `mongodb+srv://${DB_USER}:${DB_PASSWORD}@api-cluster.gbookwh.mongodb.net/bancodaapi?retryWrites=true&w=majority`
+    )
+    .then(() => {
+        app.listen(3000);
+        console.log('Conectamos ao MongoDB!');
+    })
+    .catch((err) => console.log(err));

@@ -11,6 +11,7 @@ router.post('/', async (req, res) => {
 
     if (!name) {
         res.status(422).json({ error: 'O nome é obrigatório' });
+        return;
     }
 
     // create
@@ -43,6 +44,11 @@ router.get('/:id', async (req, res) => {
 
     try {
         const person = await Person.findOne({ _id: id });
+
+        if (!person) {
+            res.status(404).json({ error: 'Pessoa não encontrada' });
+            return;
+        }
 
         res.status(200).json(person);
     } catch (error) {
